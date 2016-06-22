@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "wi-development/my-framework",
+    "description": "The WI Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
@@ -32,7 +32,7 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        
+
         }
     },
     "local-psr4": {
