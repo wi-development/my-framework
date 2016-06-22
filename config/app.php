@@ -162,14 +162,14 @@ return [
 
 
 		
-		/* WI package */
+		/* WI package
         WI\Core\CoreServiceProvider::class,
         WI\Dashboard\DashboardServiceProvider::class,
         WI\Locale\LocaleServiceProvider::class,
         WI\User\UserServiceProvider::class,
         WI\Media\MediaServiceProvider::class,
 	    WI\Sitemap\SitemapServiceProvider::class,
-
+*/
 		WI\Contact\ContactServiceProvider::class,
 
         /* Vendor package */

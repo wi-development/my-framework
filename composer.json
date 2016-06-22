@@ -32,15 +32,18 @@
         ],
         "psr-4": {
             "App\\": "app/"
-            ,"WI\\Core\\": "packages/WI/Core/src"
-            ,"WI\\Dashboard\\": "packages/WI/Dashboard/src"
-            ,"WI\\Sitemap\\": "packages/WI/Sitemap/src"
-            ,"WI\\Locale\\": "packages/WI/Locale/src"
-            ,"WI\\User\\": "packages/WI/User/src"
-            ,"WI\\Media\\": "packages/WI/Media/src"
-			,"WI\\Contact\\": "packages/WI/Contact/src"
-			
+        
         }
+    },
+    "local-psr4": {
+        "use-for-local-autoload": ""
+        ,"WI\\Core\\": "packages/WI/Core/src"
+        ,"WI\\Dashboard\\": "packages/WI/Dashboard/src"
+        ,"WI\\Sitemap\\": "packages/WI/Sitemap/src"
+        ,"WI\\Locale\\": "packages/WI/Locale/src"
+        ,"WI\\User\\": "packages/WI/User/src"
+        ,"WI\\Media\\": "packages/WI/Media/src"
+        ,"WI\\Contact\\": "packages/WI/Contact/src"
     },
     "autoload-dev": {
         "classmap": [
