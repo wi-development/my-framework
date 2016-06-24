@@ -162,7 +162,7 @@ return [
 
 
 		
-		/* WI package
+		/* WI packages */
 		//1
 	    WI\Contact\ContactServiceProvider::class,
 		//2
@@ -177,7 +177,7 @@ return [
 	    WI\Locale\LocaleServiceProvider::class,
 	    //7
 	    WI\Media\MediaServiceProvider::class,
-		*/
+
 
 
         /* Vendor package */
