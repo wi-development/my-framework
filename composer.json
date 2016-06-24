@@ -21,7 +21,14 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "wi-development/contact": "~0.3.0",
+        "wi-development/user": "~0.1.0",
+        "wi-development/dashboard": "~0.1.0",
+        "wi-development/sitemap": "~0.0.1",
+        "wi-development/core": "~0.0.1",
+        "wi-development/locale": "~0.0.1",
+        "wi-development/media": "~0.0.1"
     },
     "autoload": {
         "classmap": [
