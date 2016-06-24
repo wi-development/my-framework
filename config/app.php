@@ -170,7 +170,22 @@ return [
         WI\Media\MediaServiceProvider::class,
 	    WI\Sitemap\SitemapServiceProvider::class,
 */
-		#WI\Contact\ContactServiceProvider::class,
+		//1
+	    WI\Contact\ContactServiceProvider::class,
+		//2
+	    WI\User\UserServiceProvider::class,
+	    //3
+	    WI\Dashboard\DashboardServiceProvider::class,
+	    //4
+	    WI\Sitemap\SitemapServiceProvider::class,
+	    //5
+	    WI\Core\CoreServiceProvider::class,
+		//6
+	    WI\Locale\LocaleServiceProvider::class,
+	    //7
+	    WI\Media\MediaServiceProvider::class,
+
+
 
         /* Vendor package */
         Barryvdh\Debugbar\ServiceProvider::class,

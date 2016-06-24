@@ -13,6 +13,7 @@ Homestead.json
 /resources/views/admin/contact
 
 /resources/views/vendor
+/resources/views
 
 
 # OS generated files #
@@ -24,3 +25,8 @@ Homestead.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+resources/views/auth/passwords/email.blade.php
+
+resources/views/auth/login.blade.php
+
+resources/views/auth/login.blade.php

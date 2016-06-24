@@ -17,8 +17,10 @@
 
 
 Route::get('/', function () {
-    //dc(settings()->sitemap_form_left_tab);
-dd('home');
+    if (Auth::check()) {
+        //dc('Dag '.Auth::user()->name.', je bent ingelogd.');
+    }
+    dd('home');
 
 
 dc(settings());

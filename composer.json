@@ -32,18 +32,17 @@
         ],
         "psr-4": {
             "App\\": "app/"
-
         }
     },
     "local-psr4": {
         "use-for-local-autoload": ""
-        ,"WI\\Core\\": "packages/WI/Core/src"
+        ,"WI\\Contact\\": "packages/WI/Contact/src"
+        ,"WI\\User\\": "packages/WI/User/src"
         ,"WI\\Dashboard\\": "packages/WI/Dashboard/src"
         ,"WI\\Sitemap\\": "packages/WI/Sitemap/src"
+        ,"WI\\Core\\": "packages/WI/Core/src"
         ,"WI\\Locale\\": "packages/WI/Locale/src"
-        ,"WI\\User\\": "packages/WI/User/src"
         ,"WI\\Media\\": "packages/WI/Media/src"
-        ,"WI\\Contact\\": "packages/WI/Contact/src"
     },
     "autoload-dev": {
         "classmap": [
@@ -63,7 +62,8 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan vendor:publish --tag=contact-config"
         ]
     },
     "config": {
