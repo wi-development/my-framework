@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3dc384f5208afb1d4c326ebaedfbcbf9",
-    "content-hash": "8fbb2147cfa45e880ac43e511ff2db75",
+    "hash": "894c21bea994c2467e2e902f99a64ab7",
+    "content-hash": "a08e67baa73a5c0593f4dd9b025caf92",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2796,16 +2796,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.11.6",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "6d9a36aa921ffc703e722a0f34d2dc56112562c6"
+                "reference": "4862252d6685521b5a302c018ae6c7cfec19abd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/6d9a36aa921ffc703e722a0f34d2dc56112562c6",
-                "reference": "6d9a36aa921ffc703e722a0f34d2dc56112562c6",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/4862252d6685521b5a302c018ae6c7cfec19abd9",
+                "reference": "4862252d6685521b5a302c018ae6c7cfec19abd9",
                 "shasum": ""
             },
             "require": {
@@ -2849,7 +2849,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2016-06-18 11:40:02"
+            "time": "2016-06-23 07:37:11"
         }
     ],
     "packages-dev": [
@@ -4169,6 +4169,265 @@
                 "validate"
             ],
             "time": "2015-08-24 13:29:44"
+        },
+        {
+            "name": "wi-development/contact",
+            "version": "0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/contact.git",
+                "reference": "96e0eef4f1771e22b10745fadb24d3e6f400e3b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/contact/zipball/96e0eef4f1771e22b10745fadb24d3e6f400e3b0",
+                "reference": "96e0eef4f1771e22b10745fadb24d3e6f400e3b0",
+                "shasum": ""
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Contact\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "Contact Test Package",
+            "keywords": [
+                "framework",
+                "laravel"
+            ],
+            "time": "2016-06-22 19:16:08"
+        },
+        {
+            "name": "wi-development/core",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/core.git",
+                "reference": "c66b750a8e14e63bc97aeae5ca8d31de671f755e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/core/zipball/c66b750a8e14e63bc97aeae5ca8d31de671f755e",
+                "reference": "c66b750a8e14e63bc97aeae5ca8d31de671f755e",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Core\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "wi core packaage",
+            "keywords": [
+                "core",
+                "laravel"
+            ],
+            "time": "2016-06-23 07:56:27"
+        },
+        {
+            "name": "wi-development/dashboard",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/dashboard.git",
+                "reference": "561ffc3ac7406edf58109866db167873c2a3b3a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/dashboard/zipball/561ffc3ac7406edf58109866db167873c2a3b3a4",
+                "reference": "561ffc3ac7406edf58109866db167873c2a3b3a4",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Dashboard\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "Admin's dashboard",
+            "keywords": [
+                "framework",
+                "laravel"
+            ],
+            "time": "2016-06-23 10:00:05"
+        },
+        {
+            "name": "wi-development/locale",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/locale.git",
+                "reference": "4135c468731782ee885589e56175e954234ca7c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/locale/zipball/4135c468731782ee885589e56175e954234ca7c0",
+                "reference": "4135c468731782ee885589e56175e954234ca7c0",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Locale\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "Admin's locale",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "time": "2016-06-23 08:06:12"
+        },
+        {
+            "name": "wi-development/media",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/media.git",
+                "reference": "73fabbdb8909124abedab4256ff313c9dce767cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/media/zipball/73fabbdb8909124abedab4256ff313c9dce767cb",
+                "reference": "73fabbdb8909124abedab4256ff313c9dce767cb",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Media\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "Admin's media",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "time": "2016-06-23 08:19:43"
+        },
+        {
+            "name": "wi-development/sitemap",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/sitemap.git",
+                "reference": "47b5fc19c55b0a13a91124cbc75ea9fd9ba2856c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/sitemap/zipball/47b5fc19c55b0a13a91124cbc75ea9fd9ba2856c",
+                "reference": "47b5fc19c55b0a13a91124cbc75ea9fd9ba2856c",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\Sitemap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "wi sitemap packaage",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "time": "2016-06-23 07:36:05"
+        },
+        {
+            "name": "wi-development/user",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wi-development/user.git",
+                "reference": "06dfcc20253a6146d57b99cb3b17905017990075"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wi-development/user/zipball/06dfcc20253a6146d57b99cb3b17905017990075",
+                "reference": "06dfcc20253a6146d57b99cb3b17905017990075",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "WI\\User\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tonny Wijnand",
+                    "email": "tonnywijnand@gmail.com"
+                }
+            ],
+            "description": "Handles the user",
+            "keywords": [
+                "framework",
+                "laravel"
+            ],
+            "time": "2016-06-23 10:11:10"
         }
     ],
     "aliases": [],
