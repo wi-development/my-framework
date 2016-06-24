@@ -3,7 +3,6 @@
     "description": "The WI Laravel Framework.",
     "keywords": ["package", "laravel"],
     "license": "MIT",
-    "version": "0.1.0",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
@@ -15,7 +14,7 @@
         "yajra/laravel-datatables-oracle": "^6.11",
         "intervention/image": "^2.3",
         "intervention/imagecache": "^2.3",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
         "wi-development/contact": "~0.3.0",
         "wi-development/user": "~0.1.0",
         "wi-development/dashboard": "~0.1.0",
