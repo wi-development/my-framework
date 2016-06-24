@@ -163,13 +163,6 @@ return [
 
 		
 		/* WI package
-        WI\Core\CoreServiceProvider::class,
-        WI\Dashboard\DashboardServiceProvider::class,
-        WI\Locale\LocaleServiceProvider::class,
-        WI\User\UserServiceProvider::class,
-        WI\Media\MediaServiceProvider::class,
-	    WI\Sitemap\SitemapServiceProvider::class,
-*/
 		//1
 	    WI\Contact\ContactServiceProvider::class,
 		//2
@@ -184,7 +177,7 @@ return [
 	    WI\Locale\LocaleServiceProvider::class,
 	    //7
 	    WI\Media\MediaServiceProvider::class,
-
+		*/
 
 
         /* Vendor package */
