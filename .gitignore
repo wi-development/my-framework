@@ -28,5 +28,3 @@ Thumbs.db
 resources/views/auth/passwords/email.blade.php
 
 resources/views/auth/login.blade.php
-
-resources/views/auth/login.blade.php
