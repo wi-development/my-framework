@@ -1,7 +1,7 @@
 {
     "name": "wi-development/my-framework",
     "description": "The WI Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": ["package", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
