@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://my-framewe'),
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,9 @@ return [
 	    WI\Locale\LocaleServiceProvider::class,
 	    //7
 	    WI\Media\MediaServiceProvider::class,
+		
+		//public routes last
+	    App\Providers\RoutePublicServiceProvider::class,
 
 
 

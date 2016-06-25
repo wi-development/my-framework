@@ -54,7 +54,16 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php"
-        ]
+        ],
+        "psr-4": {
+            "WI\\Contact\\": "packages/WI/Contact/src"
+            ,"WI\\User\\": "packages/WI/User/src"
+            ,"WI\\Dashboard\\": "packages/WI/Dashboard/src"
+            ,"WI\\Sitemap\\": "packages/WI/Sitemap/src"
+            ,"WI\\Core\\": "packages/WI/Core/src"
+            ,"WI\\Locale\\": "packages/WI/Locale/src"
+            ,"WI\\Media\\": "packages/WI/Media/src"
+        }
     },
     "scripts": {
         "post-root-package-install": [

@@ -16,14 +16,21 @@
 
 
 
-Route::get('/', function () {
+Route::get('/UIT', function () {
+
+//dd('test');
+
     if (Auth::check()) {
+        dc(settings()->all());
         //dc('Dag '.Auth::user()->name.', je bent ingelogd.');
     }
-    dd('home');
+    //dd('home');
+
+	//return "view";
+    return view('index');
 
 
-dc(settings());
+	dc(settings());
     dc(settings());
     dc(settings());
     return "view";
@@ -90,5 +97,3 @@ $this->get('password/reset/{token?}',   ['as' => 'reset',               'uses' =
 // Registration Routes...
 $this->get('register',                  ['as' => 'register',            'uses' => 'Auth\AuthController@showRegistrationForm']);
 $this->post('register',                 ['as' => '',                    'uses' => 'Auth\AuthController@register']);
-
-
