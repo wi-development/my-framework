@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use GoogleMaps\GoogleMaps;
 use Illuminate\Support\Facades\Mail;
 use WI\Core\Entities\Reference\Reference;
 use WI\Sitemap\Repositories\SitemapRepositoryInterface;
 
 use WI\Sitemap\SitemapTranslation;
 use Auth;
+use Gate;
 use Carbon\Carbon;
 use Form;
 use Illuminate\Http\Request;
@@ -29,6 +31,7 @@ use Response;
 use Route;
 use Session;
 use URL;
+use WI\User\Permission;
 
 class SitemapController extends Controller
 {
@@ -365,10 +368,156 @@ class SitemapController extends Controller
 	}
 
 
+	public function indexGuest(Request $request){
+
+
+		//Auth::loginUsingId(48,true);
+
+		//dc('stop guest');
+		if (Auth::check()) {
+			$user = Auth::user();
+			//dc($user->name);
+			//dc($user->usertype()->get());
+			//dc($user->isBackEndUser());
+			//dc($user->isFrontEndUser());
+			//if ($user->hasRole('mijnZD-user')){
+			if ($user->isFrontEndUser()){
+					//dc('isBackEndUser: ');
+				//dc($user->isBackEndUser());
+				//dc('stop ga naar dashboard');
+				return redirect()->route('sitemap.indexDashboard');
+				return $this->indexDashboard($request);
+			}
+		}
+
+		return view('indexGuest');
+	}
+
+
+	public function indexDashboard(Request $request){
+
+		//Auth::loginUsingId(48,true);
+		//dc('stop dashboard');
+		$component_name = "Bookmarks";
+		$user = Auth::user();
+		//dc($user->usertype->name);
+		//dc($user->roleNames());
+		//dd($user->name);
+		$references = Reference::with(['translation.banner','referencetype','updated_by_user'])
+			->whereHas('components', function ($component) use ($component_name) { // ...1 subquery to filter the photos by related tags' name
+				$component->where('name', ''.$component_name.'');
+			})->get();
+
+		//dc($references);
+
+		$referencesWithPermissions = [];
+		foreach ($references as $key => $reference){
+			if ($user->can('view_bookmark_reference_'.$reference->id.'')) {
+				$referencesWithPermissions[] = $reference;
+				//dc($reference->id.' - '.$reference->translation->name);
+			}
+		}
+		$bookmarks = collect($referencesWithPermissions);
+		return view('indexDashboard',compact('bookmarks'));
+	}
+
 
 
 	public function indexHome(Request $request)
 	{
+
+
+		$response = '';
+		return view('index',compact('response'));
+
+
+
+
+
+//https://developers.google.com/maps/premium/optimize-web-services
+		$response1 = \GoogleMaps::load('distancematrix')
+			->setEndpoint('json')
+			->setParam ([
+				'origins' => 'Groningen|Nederland',
+				'destinations' => 'Amsterdam|Nederland',
+				'mode' => 'driving'
+			])->get();
+			//->getEndpoint();
+			//->get();
+		//echo($response1);
+//return $response1;
+		//dc(json_decode($response1));
+		return response()->json(json_decode($response1),200);
+		return response($response1, 200)->header('Content-Type', 'application/json');
+
+
+		return response()->json('tet',200);
+return "view";
+
+		return view('maps',compact('response'));
+//dc($response);
+		dc(Permission::with('roles')->get()->pluck('name')->all());
+		//dc(Auth::getPermissions());
+		$test = Auth::check();
+		dc(Auth::check());
+		if (Auth::check()){
+			dc('not in');
+		}
+		else{
+			dc('not logged in');
+		}
+		dc($test);
+
+		//$user = Auth::loginUsingId(13);
+		$user = Auth::user();
+	//dc($user::getPermissions());
+
+		dc($user->name);
+		dc($user->roles()->get()->pluck('name')->all());
+		//dc($user->roles()->permissions());
+
+		$userRoles = $user->roles()->with('permissions')->get();
+		dc($userRoles[0]->permissions->pluck('name')->all());
+
+
+
+
+		//dc($user->hasRole('managerx'));
+
+
+		$component_name = "Bookmarks";
+		$references = Reference::with(['translation','referencetype','updated_by_user'])
+			->whereHas('components', function ($component) use ($component_name) { // ...1 subquery to filter the photos by related tags' name
+				$component->where('name', ''.$component_name.'');
+			})->get();
+
+
+
+		foreach ($references as $key => $reference){
+			if ($user->can('view_bookmark_reference_'.$reference->id.'')) {
+				dc($reference->id.' - '.$reference->translation->name);
+			}
+
+		}
+
+		//$role->givePermissionTo($permission);
+
+		//dc($references[0]->translation->name);
+		return "view";
+		//@can('edit_formxx')
+
+		if ($user->can('edit_form')) {
+			dc('can edit form');
+		}
+		else{
+			dc('can\'t edit form');
+		}
+		if (Gate::denies('update', 'asdf')) {
+			//abort(403);
+		}
+		//dc($user->hasPermission('managerx'));
+		return view('welcome');
+
 		dd('public index');
 
 		//$references = Sitemap::with([

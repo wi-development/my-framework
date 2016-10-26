@@ -35,9 +35,28 @@ Route::post('sendContactForm',
 		,'uses' => 'SitemapController@sendEmailContact']);
 
 
+Route::get('/',
+	['as' => 'sitemap.indexGuest'
+		,'uses' => 'SitemapController@indexGuest'
+		//,'middleware' => ['guest','auth']
+	]);
+
+
+Route::get('/dashboard',
+	['as' => 'sitemap.indexDashboard'
+		,'uses' => 'SitemapController@indexDashboard'
+		,'middleware' => ['auth']
+	]);
+
+
 Route::get('{parent_slug?}/{child_slug?}/{child_slug1?}/{child_slug2?}',
     ['as' => 'sitemap.indexHome'
-        ,'uses' => 'SitemapController@indexHome']);
+        ,'uses' => 'SitemapController@indexHome'
+	        ,'middleware' => ['auth']
+    ]);
+
+
+
 
 
 

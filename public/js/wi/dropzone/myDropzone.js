@@ -113,7 +113,6 @@ if (test){
                 }
 
 
-
                 // Show the total progress bar when upload starts
                 this.totalUploadProgress.style.opacity = "1";
                 // And disable the start button

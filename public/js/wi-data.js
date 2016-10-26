@@ -151,10 +151,15 @@ function setTable(tableConfig) {
 
     var oTable = $('#users-table').DataTable({
         lengthMenu: [[5, 10, 25, 50, 1000], [5, 10, 25, 50, "All"]],
+
+        pageLength: (!!tableConfig.pageLength) ? tableConfig.pageLength : 5,
+
         order: [[ tableConfig.orderColumnInit, tableConfig.orderColumnInitType ]],
         dom: "<'row'<'col-xs-12'<'toolbarx'><'col-xs-6'<'tableDraggable'>f>>r>" +
         "<'row'<'col-xs-12't>>" +
         "<'row'<'col-xs-12' l<'col-xs-6'i><'col-xs-6'p>>>",
+        //"<'row'<'col-xs-12' <'col-xs-6'i><'col-xs-6'p '<'col-xs-12' l>",
+        //"<'row'<'col-xs-12'<'col-xs-6'i ><'col-xs-12'p>>>",
         //dom:"<'toolbar'>frtip",
         //retrieve: true,
         //deferRender: false,
@@ -165,6 +170,7 @@ function setTable(tableConfig) {
         //stateSave: true,
         //rowReorder: true,
         rowReorder: tableConfig.reOrderConfig,
+        language:tableConfig.language,
         ajax_uit: {
             url: tableConfig.urlData,
             //pages: 5, // number of pages to cache
@@ -352,46 +358,46 @@ function setTable(tableConfig) {
     optionValues.forEach(logArrayElements);
     //console.info(selectOptionValues);
 
+    //alert(tableConfig.bulkActions);
+    var bulkSelect = '';
+    if ((tableConfig.bulkActions)) {
+        var bulkSelect = '<div class="btn-group pull-left mar-rgt pad-no">' +
+            '<button class="btn btn-default">Bulk acties</button>' +
+            '<button aria-expanded="false" class="btn btn-default dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">' +
+            '<i class="dropdown-caret fa fa-caret-down"></i>' +
+            '</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="wiBulkDeleteMedia">Verwijder alle aangevinkte items</a>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+    }
 
 
-    var bulkSelect = '<div class="btn-group pull-left mar-rgt pad-no">'+
-        '<button class="btn btn-default">Bulk acties</button>'+
-        '<button aria-expanded="false" class="btn btn-default dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">'+
-        '<i class="dropdown-caret fa fa-caret-down"></i>'+
-        '</button>'+
-        '<ul class="dropdown-menu">'+
-        '<li><a href="#">Action</a>'+
-        '</li>'+
-        '<li><a href="#" id="wiBulkDeleteMedia">Verwijder alle aangevinkte items</a>'+
-        '</li>'+
-        '<li><a href="#">Another action</a>'+
-        '</li>'+
-        '<li><a href="#">Something else here</a>'+
-        '</li>'+
-        '<li class="divider"></li>'+
-        '		<li><a href="#">Separated link</a>'+
-        '</li>'+
-        '</ul>'+
-        '</div>';
-
-
-    $("div.toolbarx").html('' +
-
-        ''+bulkSelect+'' +
-            //'<button class="btn btn-info pull-left mar-rgt pad-no" id="wiBulk">CLICK</button>' +
-        '<form role="form" class="form-inline" id="search-form" method="GET">' +
-        '<div class="form-group">' +
+    var customSelect = '';
+    if (optionValues.length > 0){
+        var customSelect = ('<form role="form" class="form-inline" id="search-form" method="GET">' +
+            '<div class="form-group">' +
             //'<label for="'+tableConfig.customSearchColumn+'"></label>' +
             //'<input type="text" placeholder="zoek '+tableConfig.customSearchColumn+'" id="'+tableConfig.customSearchColumn+'" name="'+tableConfig.customSearchColumn+'" class="form-control" autocomplete="off">' +
             //'</div>' +
-        '<button class="btn btn-primary">'+tableConfig.customSearchButtonValue+'</button>'+
-        '<select class="selectpicker" id="x'+tableConfig.customSearchColumn+'" name="c'+tableConfig.customSearchColumn+'" style="display:none;"> ' +
-        '<optgroup label="Selecteer een '+tableConfig.customSearchButtonValue+'">' +
-        '<option value="">toon alles</option>' +
-        ''+selectOptionValues+'' +
-        '</select>' +
-        '<optgroup>' +
-        '</form>');
+            '<button class="btn btn-primary">'+tableConfig.customSearchButtonValue+'</button>'+
+            '<select class="selectpicker" id="x'+tableConfig.customSearchColumn+'" name="c'+tableConfig.customSearchColumn+'" style="display:none;"> ' +
+            '<optgroup label="Selecteer een '+tableConfig.customSearchButtonValue+'">' +
+            '<option value="">toon alles</option>' +
+            ''+selectOptionValues+'' +
+            '</select>' +
+            '<optgroup>' +
+            '</form>');
+    }
+
+
+
+    $("div.toolbarx").html('' +
+        ''+bulkSelect+'' +
+        ''+customSelect+''
+    );
+
     $("div.toolbarx").addClass('col-xs-6 pad-no');
 
 
@@ -406,7 +412,9 @@ function setTable(tableConfig) {
     ///escape . in id
     $('#x'+CSS.escape(tableConfig.customSearchColumn)+'').on('change', function () {
         //console.warn(tableConfig.customSearchColumn);
+
         oTable.column(''+tableConfig.customSearchColumn+':name').search(this.value).draw();
+        //oTable.column(''+tableConfig.customSearchColumn+':name').search(this.value).draw();
     });
 
 
@@ -437,8 +445,15 @@ function wiLoad(sitemap_id){
     });
     //get controller indexMenu
     console.warn(urlData);
+
+
     var jqxhr = $.get(""+urlData+"", function( data ) {
         //set view data
+        //if (sitemap_id  == 0){
+
+        //}
+
+        console.info('wi-load');
         $('h3.panel-title small').html(data.breadcrumbAsHTML);
         $('#createPage').html(data.allowed_child_templates_as_html);
 
@@ -464,6 +479,15 @@ function wiLoad(sitemap_id){
         oTable.ajax.url(urlData).load();
     }).done(function() {
             //console.warn( "second success" );
+        console.info('set breadcrumb'+sitemap_id);
+            if (sitemap_id == 0){
+                $('#page-content ol.breadcrumb a.all').addClass('active');
+                $('#page-content ol.breadcrumb a.home').removeClass('active');
+            }
+            else{
+                $('#page-content ol.breadcrumb a.all').removeClass('active');
+                $('#page-content ol.breadcrumb a.home').addClass('active');
+            }
         })
         .fail(function(d) {
             //console.warn( "error:");
@@ -483,6 +507,36 @@ function wiLoad(sitemap_id){
  *
  */
 function wiDelete(id,route){
+    bootbox.confirm("Verwijderen, zeker weten?", function(result) {
+        if (result) {
+            wiDeleteForReal(id,route);
+            /*$.niftyNoty({
+                type: 'success',
+                icon : 'fa fa-check',
+                message : 'User confirmed dialog',
+                container : 'floating',
+                timer : 3000
+            })*/
+        }else{
+            $.niftyNoty({
+                type: 'info',
+                icon : 'fa fa-info',
+                message : 'Er is niets verwijderd ;)',
+                container : 'floating',
+                timer : 3000
+            });
+        };
+
+    });
+    //wiDeleteForReal(id,route)
+}
+
+function wiDeleteForReal(id,route){
+
+    //console.info('deleteForReal:'+id+' - '+route);
+    //return true;
+    //console.warn('delete mag niet!!')
+
     var urlData = route;
 
     $.ajaxSetup({
@@ -567,7 +621,11 @@ function wiDeleteMedia(media_id){
     //var route = "{{ route('admin::media.destroy') }}";
     //var route = ""+$('meta[name="media-destroy"]').attr('content')+"";
     var route = ""+tableConfig.urlMediaDestroy+"";
+    //var route = ""+tableConfig.urlMediaDestroyBulk+"";
+
     route += '/'+media_id+'';
+    //console.info(route);
+
 
     wiDelete(media_id,route);
 }
@@ -708,6 +766,51 @@ function wiDeleteSitemap(sitemap_id){
     route += '/'+sitemap_id+'';
     wiDelete(sitemap_id,route);
 }
+
+
+function wiDeleteUser(user_id){
+    var route = ""+tableConfig.urlWiDeleteUser+"";
+    route += '/'+user_id+'';
+    wiDelete(user_id,route);
+}
+
+function wiDeleteCompany(company_id){
+    var route = ""+tableConfig.urlWiDeleteCompany+"";
+    route += '/'+company_id+'';
+    //alert('Doe maar niet\n'+route);
+    wiDelete(company_id,route);
+}
+
+function wiDeleteChart(chart_id){
+    var route = ""+tableConfig.urlWiDeleteChart+"";
+    route += '/'+chart_id+'';
+    //alert('Doe maar niet\n'+route);
+    wiDelete(chart_id,route);
+}
+
+function wiDeleteRole(role_id){
+    var route = ""+tableConfig.urlWiDeleteRole+"";
+    route += '/'+role_id+'';
+    //alert('Doe maar niet\n'+route);
+    wiDelete(role_id,route);
+}
+
+function wiDeletePermission(permission_id){
+    var route = ""+tableConfig.urlWiDeletePermission+"";
+    route += '/'+permission_id+'';
+    //alert('Doe maar niet\n'+route);
+    wiDelete(permission_id,route);
+}
+
+
+function wiDeleteReference(reference_id){
+    var route = ""+tableConfig.urlWiDeleteReference+"";
+    route += '/'+reference_id+'';
+    //alert('Doe maar niet\n'+route);
+    wiDelete(reference_id,route);
+}
+
+
 
 
 

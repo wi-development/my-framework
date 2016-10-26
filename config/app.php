@@ -177,6 +177,9 @@ return [
 	    WI\Locale\LocaleServiceProvider::class,
 	    //7
 	    WI\Media\MediaServiceProvider::class,
+	    //7
+	    WI\Chart\ChartServiceProvider::class,
+
 		
 		//public routes last
 	    App\Providers\RoutePublicServiceProvider::class,
@@ -192,6 +195,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 	    Mews\Purifier\PurifierServiceProvider::class,
+	    GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
 
 
     ],
@@ -246,6 +250,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 	    'Purifier' => Mews\Purifier\Facades\Purifier::class,
+	    'GoogleMaps' => 'GoogleMaps\Facade\GoogleMapsFacade',
 
     ],
 

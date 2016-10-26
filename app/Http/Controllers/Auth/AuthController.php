@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 #use App\User;
 #use WI\User\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -54,8 +55,6 @@ protected $redirectAfterLogout = '/';
 
         $this->redirectTo = config('wi.dashboard.admin_prefix');
         $this->redirectAfterLogout = config('wi.dashboard.admin_prefix');
-
-        //dc('sadf');
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -91,4 +90,40 @@ protected $redirectAfterLogout = '/';
     public function test(){
         return '/'.config('wi.dashboard.admin_prefix');
     }
+
+
+
+    //Illuminate\Foundation\Auth\AuthenticatesUser
+	//method handleUserWasAuthenticated()
+	//          if (method_exists($this, 'authenticated')) {
+	//			    return $this->authenticated($request, Auth::guard($this->getGuard())->user());
+	//          }
+
+
+protected function authenticated()
+	{
+		//dc('TEST: '.$this->redirectPath());
+		//dc(Auth::user()->roles()->all());
+
+		//dc(Auth::user()->isFrontEndUser());
+		//if (Auth::user()->hasRole('mijnZD-user')){
+		if (Auth::user()->isFrontEndUser()){
+				//dd(Auth::user());
+			return redirect('/dashboard');
+		}
+
+		return redirect('/backStage');
+		//dd($this->redirectPath());
+		//dd('asdfXX');
+		//return redirect()->intended($this->redirectPath());
+		return redirect()->intended($this->redirectPath());
+		//dc(Auth::user()->hasRole('developerx'));
+		//if(Auth::user()->admin) {
+		//	return redirect('admin/dashboard');
+		//}
+
+		//return redirect('account/dashboard');
+	}
+
+
 }

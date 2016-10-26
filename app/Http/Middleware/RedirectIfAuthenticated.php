@@ -17,10 +17,14 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+    	if (Auth::guard($guard)->check()) {
+    		//dd('sadfasdgdfsgsfd');
+
+		    //dashboard = fallback
+		    //return redirect()->intended('/backStagex');
+
             return redirect('/'.config('wi.dashboard.admin_prefix').'');
             return redirect('/backStage');
-
         }
 
         return $next($request);

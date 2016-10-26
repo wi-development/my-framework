@@ -14,7 +14,7 @@
 
 
 
-
+/*
 
 Route::get('/UIT', function () {
 
@@ -64,8 +64,7 @@ dc(session());
     dc($user->settings->foo);
     return view('welcome');
     */
-});
-
+//});
 
 
 Route::get('/settings', function () {

@@ -56,7 +56,7 @@ return [
     */
 
     //'from' => ['address' => null, 'name' => null],
-    'from' => ['address' => 'tonnywijnand@me.com', 'name' => 'DMCA Sender'],
+    'from' => ['address' => 'info@zorggroepdrenthe.nl', 'name' => 'MijnZD'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

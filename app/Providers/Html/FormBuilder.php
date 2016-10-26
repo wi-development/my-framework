@@ -40,7 +40,22 @@ class FormBuilder extends \Collective\Html\FormBuilder {
             </div>";
         return $retval;
     }
-
+	//($name, $value = 1, $checked = null, $options = [])
+	public function getFormGroupCheckbox($label,$id,$value,$checked,$errors){
+		$feedBackSelector = $this->getFeedBackSelector($errors,$id);
+		$feedBackHtml = $this->getFeedBackHtml($errors,$id);
+///".parent::label(''.$id.'', ''.$label.':',['class' => 'control-label'])."
+		//active
+		$activeClass="";
+		if ($checked) $activeClass=" active";
+		$retval = "<div class=\"checkbox  ".$feedBackSelector."\">
+                <label class=\"form-checkbox form-normal form-primary form-text".$activeClass."\">
+                ".$this->checkbox($id, $value, $checked, ['claxxss' => 'formxx-control'])."
+                ".$label."
+                </label>".$feedBackHtml."
+            </div>";
+		return $retval;
+	}
 
     public function getFormGroupPassword($label,$id,$value,$errors){
         $feedBackSelector = $this->getFeedBackSelector($errors,$id);
